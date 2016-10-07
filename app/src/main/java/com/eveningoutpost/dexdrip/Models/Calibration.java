@@ -852,7 +852,7 @@ public class Calibration extends Model {
                 .where("Sensor = ? ", sensor.getId())
                 .where("slope_confidence != 0")
                 .where("sensor_confidence != 0")
-                .where("( slope !=0 and intercept !=0 )")
+                .where("slope != 0")
                 .orderBy("timestamp desc")
                 .executeSingle();
     }
@@ -910,6 +910,22 @@ public class Calibration extends Model {
         return new Select()
                 .from(Calibration.class)
                 .where("Sensor = ? ", sensor.getId())
+                .orderBy("timestamp desc")
+                .limit(number)
+                .execute();
+    }
+
+    public static List<Calibration> latestValid(int number) {
+        Sensor sensor = Sensor.currentSensor();
+        if (sensor == null) {
+            return null;
+        }
+        return new Select()
+                .from(Calibration.class)
+                .where("Sensor = ? ", sensor.getId())
+                .where("slope_confidence != 0")
+                .where("sensor_confidence != 0")
+                .where("slope != 0")
                 .orderBy("timestamp desc")
                 .limit(number)
                 .execute();
