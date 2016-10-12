@@ -137,6 +137,8 @@ public class NightscoutUploader {
                 return false;
             }
 
+            boolean success = false;
+
             for (String baseURI : baseURIs) {
                 try {
                     int apiVersion = 0;
@@ -168,13 +170,13 @@ public class NightscoutUploader {
                     } else {
                         doLegacyRESTUploadTo(nightscoutService, glucoseDataSets);
                     }
+                    success = true;
                 } catch (Exception e) {
                     Log.e(TAG, "Unable to do REST API Upload " + e.getMessage());
                     e.printStackTrace();
-                    return false;
                 }
             }
-            return true;
+            return success;
         }
 
         private void doLegacyRESTUploadTo(NightscoutService nightscoutService, List<BgReading> glucoseDataSets) throws Exception {
