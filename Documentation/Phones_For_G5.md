@@ -29,6 +29,7 @@ Nexus 6P | 7.1.1
 LG V20 (LG-H918) | 7.0
 LG G4 (VS986 & H811) | 6.0
 Motorola Moto E (2nd Gen) (XT1526) | 5.1
+Motorola Moto G5 Plus | 7.0
 Motorola G3 | 6.0
 Blu R1 HD | 6.0
 Sony Xperia Z3 Compact (D5803) | 6.0.1
